@@ -3,6 +3,6 @@
 (function( $ ){
 	// when dom is ready...
 	$(function(){
-		$( "<p>generalenhancements.js was loaded  because the screen width is greater than 500px.</p>" ).appendTo( "body" );
+		$( "<p>widescreen.js was loaded  because the screen width is greater than 500px.</p>" ).appendTo( "body" );
 	});
 })( wrap );
