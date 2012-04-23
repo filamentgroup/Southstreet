@@ -8,7 +8,7 @@ Southstreet is a set of tools that combine to form the core of a progressive enh
 - [Wrap](https://github.com/filamentgroup/wrap): a modular JavaScript library for DOM manipulation and Ajax, inspired by the jQuery API
 - [AjaxInclude](https://github.com/filamentgroup/ajaxinclude): a plugin that is designed for modular content construction, that runs on Wrap (or jQuery)
 
-Together these tools form the core of Filament Group's progressive enhancement workflow; let's break down the role that each one plays.
+Together these tools form the core of Filament Group's progressive enhancement workflow, and the `_tmpl` folder of this repository contains a working example of these tools working together. Let's break down the role that each one plays.
 
 ## Enhance
 
