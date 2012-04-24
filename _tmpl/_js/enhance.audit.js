@@ -14,7 +14,7 @@
 	// Add your qualifications for major browser experience divisions here.
 	// For example, you might choose to only enhance browsers that support document.querySelectorAll (IE8+, etc).
 	// Use case will vary, but basic browsers: last stop here!
-	if( !"querySelectorAll" in win.document ){
+	if( !( "querySelectorAll" in win.document ) ){
 		return;
 	}
 	
