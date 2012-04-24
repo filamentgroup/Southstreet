@@ -48,7 +48,7 @@
 							var content = $(data);
 							
 							if( $(this).data( "proxy" ) ){
-								content = content.filter( "entry[url=\"" + $(this).data( "url" ) + "\"]" );
+								content = content.filter( "entry[url=\"" + $(this).data( "url" ) + "\"]" ).html();
 							}
 							$( this )[ $(this).data( "method" ) ]( content );	
 						});
