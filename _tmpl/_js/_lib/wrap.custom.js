@@ -407,7 +407,7 @@
 				wsel = wrap( sel, context );
 			}
 			
-			if( wrap.inArray( this, wsel ) >= 0 ){
+			if( wrap.inArray( this, wsel ) > -1 ){
 				ret.push( this );				
 			}
 		});
@@ -443,7 +443,7 @@
 		var ret = false,
 			sel = wrap( sel );
 		this.each(function( i ){
-			if( wrap.inArray( this, sel )  >= 0 ){
+			if( wrap.inArray( this, sel )  > -1 ){
 				ret = true;				
 			}
 		});
@@ -468,7 +468,7 @@
 		var ret = [],
 			sel = wrap( sel );
 		this.each(function( i ){
-			if( !wrap.inArray( this, sel ) >= 0 ){
+			if( wrap.inArray( this, sel ) === -1 ){
 				ret.push( this );				
 			}
 		});
@@ -500,13 +500,13 @@
 				if( sel ){
 					if( curr === wrap( sel )[0] ){
 						match = true;
-						if( !wrap.inArray( curr, ret ) >= 0 ){
+						if( wrap.inArray( curr, ret ) === -1 ){
 							ret.push( curr );
 						}
 					}
 				}
 				else {
-					if( !wrap.inArray( curr, ret ) >= 0 ){
+					if( wrap.inArray( curr, ret ) === -1 ){
 						ret.push( curr );
 					}
 				}				
