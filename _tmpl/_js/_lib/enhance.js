@@ -110,13 +110,20 @@
 		return ( url.indexOf( ".js" ) > -1 ? ejs.loadJS : ejs.loadCSS )( url );
 	};
 	
+	// concatSyntax is a function that decorates a URL in whatever way necessary for a concatenator API. 
+	// To configure, just define it as a function with a url argument, and return that url decorated any way your concatenator expects.
+	// by default, Enhance uses the  url pattern suggested in the QuickConcat project: https://github.com/filamentgroup/quickconcat
+	ejs.concatSyntax = function( url ){
+		return url + "=concat";
+	};
+	
 	// Function for triggering the CSS and JS requests
 	ejs.enhance = function(){
 		if( ejs.jsToLoad.length ){
-			ejs.load( ejs.jsToLoad.join(",") + "=concat" );
+			ejs.load( ejs.concatSyntax( ejs.jsToLoad.join(",") ) );
 		}
 		if( ejs.cssToLoad.length ){
-			ejs.load( ejs.cssToLoad.join(",") + "=concat"  );
+			ejs.load( ejs.concatSyntax( ejs.cssToLoad.join(",") )  );
 		}
 	};
 
