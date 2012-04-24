@@ -57,7 +57,9 @@
 						
 						el.data( "proxy", proxy );
 						
-						filelist.push( url );
+						if( $.inArray( url, filelist ) === -1 ){
+							filelist.push( url );
+						}
 						
 						if( k === els.length - 1 ){
 							url = proxy + filelist.join();

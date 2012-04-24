@@ -81,7 +81,7 @@
 			j = -1;
 		
 			while( j++ < childs.length-1 ){
-				if( !wrap.inArray( ret, childs[ j ] ) ){
+				if( wrap.inArray(  childs[ j ], ret ) === -1 ){
 					ret.push( childs[ j ] );
 				}
 			}
@@ -115,11 +115,11 @@
 	};
 	
 	// check if an item exists in an array
-	wrap.inArray = function( haystack, needle ){
-		var isin = false;
-		for( var i in haystack ){
+	wrap.inArray = function( needle, haystack ){
+		var isin = -1;
+		for( var i = 0, il = haystack.length; i < il; i++ ){
 			if( haystack.hasOwnProperty( i ) && haystack[ i ] === needle ){
-				isin = true;
+				isin = i;
 			}
 		}
 		return isin;
@@ -407,7 +407,7 @@
 				wsel = wrap( sel, context );
 			}
 			
-			if( wrap.inArray( wsel, this ) ){
+			if( wrap.inArray( this, wsel ) >= 0 ){
 				ret.push( this );				
 			}
 		});
@@ -443,7 +443,7 @@
 		var ret = false,
 			sel = wrap( sel );
 		this.each(function( i ){
-			if( wrap.inArray( sel, this ) ){
+			if( wrap.inArray( this, sel )  >= 0 ){
 				ret = true;				
 			}
 		});
@@ -468,7 +468,7 @@
 		var ret = [],
 			sel = wrap( sel );
 		this.each(function( i ){
-			if( !wrap.inArray( sel, this ) ){
+			if( !wrap.inArray( this, sel ) >= 0 ){
 				ret.push( this );				
 			}
 		});
@@ -500,13 +500,13 @@
 				if( sel ){
 					if( curr === wrap( sel )[0] ){
 						match = true;
-						if( !wrap.inArray( ret, curr ) ){
+						if( !wrap.inArray( curr, ret ) >= 0 ){
 							ret.push( curr );
 						}
 					}
 				}
 				else {
-					if( !wrap.inArray( ret, curr ) ){
+					if( !wrap.inArray( curr, ret ) >= 0 ){
 						ret.push( curr );
 					}
 				}				
