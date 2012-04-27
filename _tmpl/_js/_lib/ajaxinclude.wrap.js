@@ -68,7 +68,7 @@
 					
 					if( !proxy || k === els.length-1 ){
 						$.get( url, function( data ) {	
-							els.trigger( "ajaxInclude", [data] );
+							( proxy ? els : el ).trigger( "ajaxInclude", [data] );
 						});
 					}
 				}
