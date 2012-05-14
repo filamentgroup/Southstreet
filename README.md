@@ -14,14 +14,14 @@ Together these tools form the core of Filament Group's progressive enhancement w
 
 [Enhance](https://github.com/filamentgroup/enhance) is a tiny JavaScript framework designed to help developers determine if a browser is capable of handling additional JavaScript and CSS enhancements, and load specific enhancements for that browser as fast and simply as possible. `Enhance` provides [an API](https://github.com/filamentgroup/enhance/#readme) for some simple tasks such as checking whether an element has a particular classname, and assembling and requesting JavaScript and CSS files via a single, concatenated request. 
 
-Typically, a site that uses Enhance will start by including (anywhere in the page, or in the `head` if necessary) at least two JavaScript files that will drive the progressive enhancement process: `enhance.js`, and a custom file that uses the `enhance.js` API to configure and enhance the user experience (or not) based on various conditions: for example purposes, we'll call that custom file `enhance.audit.js`. The role of `enhance.audit.js` is to determine if – and with which files – a browser's experience should be enhanced. Within `enhance.audit.js`, the following steps might be taken:
+Typically, a site that uses Enhance will start by including (anywhere in the page, or in the `head` if necessary) at least two JavaScript files that will drive the progressive enhancement process: `enhance.js`, and a custom file that uses the `enhance.js` API to configure and enhance the user experience (or not) based on various conditions: for example purposes, we'll call that custom file `enhance.config.js`. The role of `enhance.config.js` is to determine if – and with which files – a browser's experience should be enhanced. Within `enhance.config.js`, the following steps might be taken:
 
 * Determine if a browser is broadly qualified enhancements and if not, exit early (a broad qualification might consist of detecting `document.querySelectorAll` support, CSS3 Media Queries support, or any other technology critical to an application's enhanced experience)
 * Reference the JavaScript and CSS files that may potentially be loaded
 * Queue certain files for loading based on various environmental conditions, browser capabilities, screen size, markup conditions, and more.
 * Enhance the page by loading those files via a single, concatenated request.
 
-For an example of how this process actually breaks down in JavaScript, check out the `enhance.audit.js` file in this repository.
+For an example of how this process actually breaks down in JavaScript, check out the `enhance.config.js` file in this repository.
 
 _Note that loading CSS dynamically, or lazily, in this fashion can cause undesirable results because it will likely arrive after the website has begun rendering, causing a FOUC when its styles snap into place. Because of this, you'll want to include any CSS that's essential to rendering the page being requested via the `head` of the page, through a traditional `style` tag. This limitation means `enhance.js` is more useful for loading JavaScript files, but you can use it to load CSS as well, as long as that CSS is not critical to the intial page rendering (styles associated with an overlay panel not currently in view might be a good candidate for this sort of loading)._
 
@@ -39,9 +39,9 @@ Or better yet...
 
 That's pretty much it; you can find the `quickconcat.php` source code along with more examples and implementation notes in the [QuickConcat project readme](https://github.com/filamentgroup/quickconcat#readme).
 
-Within our PE workflow, QuickConcat is used by `Enhance.js` to combine many different JavaScript or CSS files into a single request (per language). It is also used by `AjaxInclude` to combine different HTML files (more on that below). QuickConcat can also be used manually to combine JavaScript and stylesheet references in your document. For example, a site using Enhance might start by including `enhance.js` and `enhance.audit.js` like so:
+Within our PE workflow, QuickConcat is used by `Enhance.js` to combine many different JavaScript or CSS files into a single request (per language). It is also used by `AjaxInclude` to combine different HTML files (more on that below). QuickConcat can also be used manually to combine JavaScript and stylesheet references in your document. For example, a site using Enhance might start by including `enhance.js` and `enhance.config.js` like so:
 
-    <script src="/_js/lib/enhance.js,/_js/enhance.audit.js"></script>
+    <script src="/_js/lib/enhance.js,/_js/enhance.config.js"></script>
 
 ...and the necessary CSS files
 
