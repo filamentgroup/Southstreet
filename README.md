@@ -10,6 +10,7 @@ Our Southstreet workflow utilizes the following tools, all of which are independ
 - [QuickConcat](https://github.com/filamentgroup/quickconcat): a simple dynamic concatenator for html, css, and js files, written in PHP
 - [Wrap](https://github.com/filamentgroup/wrap): a modular JavaScript library for DOM manipulation and Ajax, inspired by the jQuery API
 - [AjaxInclude](https://github.com/filamentgroup/Ajax-Include-Pattern/): a plugin that is designed for modular content construction, that runs on Wrap (or jQuery)
+- [AppendAround](https://github.com/filamentgroup/AppendAround): A JavaScript pattern for responsive, roving markup.
 - [Picturefill](https://github.com/filamentgroup/picturefill/tree/div-markup): a simple pattern for overhead-free responsive images today.
 
 Together these tools form the core of Filament Group's progressive enhancement workflow. The scope of these individual projects vary widely, but they all share a common goal of serving front-end code faster, either by preventing or deferring the loading of code and assets that are not essential to the device, or by offering light-weight alternatives to common patterns. 
@@ -119,6 +120,9 @@ Perhaps the most powerful feature of AjaxInclude is that it can be used with a p
 
 AjaxInclude expects the concatenator's response to wrap each HTML file in an identifier element like this: `<entry url="..file url...">..content...</entry>`. That way, AjaxInclude can know which piece of HTML came from which file, and insert them in the proper places in the document. With QuickConcat, this is as simple as adding a `&wrap` parameter to the query string. Because of the benefits this provides the AjaxInclude technique, we recommend that this functionality be built as part of a dynamic concatenation tool as well, in the event that QuickConcat is not sufficient for production. For more information on how this works, check out the [quickconcat docs](https://github.com/filamentgroup/quickconcat#readme).
 
+## AppendAround
+
+[AppendAround](https://github.com/filamentgroup/AppendAround) is a CSS and JavaScript pattern for achieving source-order-independent layouts today. It allows us to physically move an element to different locations in a document depending on CSS breakpoints in a responsive layout. It's a way to achieve CSS flexbox-like layout in browsers today.
 
 ## Picturefill
 
