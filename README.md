@@ -6,11 +6,11 @@ Southstreet is a set of tools that combine to form the core of a progressive enh
 Our Southstreet workflow utilizes the following tools, all of which are independent Github projects themselves.  
 
 - [Enhance](https://github.com/filamentgroup/enhance): a tiny JavaScript framework designed to help developers determine if a browser is capable of handling additional JavaScript and CSS enhancements, and load specific enhancements for that browser as fast and simply as possible.
-- [eCSSential](https://github.com/filamentgroup/eCSSential): a utility for making browsers load responsive CSS in a more responsible way.
+- [eCSSential](https://github.com/filamentgroup/eCSSential): an experimental utility for making browsers load responsive CSS in a more responsible way.
 - [QuickConcat](https://github.com/filamentgroup/quickconcat): a simple dynamic concatenator for html, css, and js files, written in PHP
 - [Wrap](https://github.com/filamentgroup/wrap): a modular JavaScript library for DOM manipulation and Ajax, inspired by the jQuery API
 - [AjaxInclude](https://github.com/filamentgroup/Ajax-Include-Pattern/): a plugin that is designed for modular content construction, that runs on Wrap (or jQuery)
-- [Picturefill](https://github.com/filamentgroup/picturefill/): a plugin that is designed for modular content construction, that runs on Wrap (or jQuery)
+- [Picturefill](https://github.com/filamentgroup/picturefill/tree/div-markup): a simple pattern for overhead-free responsive images today.
 
 Together these tools form the core of Filament Group's progressive enhancement workflow. The scope of these individual projects vary widely, but they all share a common goal of serving front-end code faster, either by preventing or deferring the loading of code and assets that are not essential to the device, or by offering light-weight alternatives to common patterns. 
 
@@ -41,7 +41,7 @@ All of these tasks can be facilitated simply through the [`enhance.js` `api`](ht
 
 [eCSSential](https://github.com/filamentgroup/eCSSential) is to CSS what [Enhance](https://github.com/filamentgroup/enhance) is for JavaScript. In responsive, cross-device applications, we commonly apply CSS via CSS3 Media Queries to target certain device environments without applying in others. Unfortunately, there is no native way to do this in browsers without requiring a device to download all potentially applicable styles, and completely blocking page rendering during that time, both of which make for a great deal of overhead that grows with the complexity and applicable contexts of an application.
 
-eCSSential is a workaround to address this shortcoming. Unlike Enhance, eCSSential is designed to be used via an inline script tag in the `head` of a page. This is because we want it to execute as soon as possible (thus speeding up page rendering), and because it is small enough that it's arguably worth the tradeoff in cacheability that an external resource would provide.
+eCSSential is an experimental workaround to address this shortcoming. Unlike Enhance, eCSSential is designed to be used via an inline script tag in the `head` of a page. This is because we want it to execute as soon as possible (thus speeding up page rendering), and because it is small enough that it's arguably worth the tradeoff in cacheability that an external resource would provide.
 
 eCSSential provides many features, but the default use-case is to drop it into the `head` of a page and call the `eCSSential()` function, passing in references to your available CSS files paired with media queries to specify their intended media context. eCSSential will parse through these and split the CSS into files that should be loaded immediately to apply in initial page rendering, and files that can be loaded lazily after the page has been shown. 
 
@@ -82,9 +82,11 @@ With `enhance.js` and `quickconcat.php` covered, we can move on to the actual en
 
 [Wrap](https://github.com/filamentgroup/wrap) is a simple framework of DOM utilities that is designed to target modern browsers without failing the rest. 
 
-Within the Southstreet workflow at Filament Group, we use Wrap for enhancing the user experience by manipulating markup, making Ajax requests, and any other common tasks one would do when using an unobtrusive JavaScript DOM framework.
+Wrap is aimed particularly at cases where you need a small set of JS utilities but not a full toolkit. It's a throwback to the days of using a simple set of utilities that you need, and nothing more, but it's "wrapped" in a handy API.
 
-Wrap is inspired by the jQuery API, letting you find elements and manipulate them. Uniquely however, Wrap is written in such a way that it'll only do anything at all in modern browsers, like Internet Explorer 8 and up. Other browsers? They'll get a less-enhanced experience. There won't be errors, but there may be less _zing_. Assuming you're already building applications with Progressive Enhancement, you should be fine without JavaScript enhancements. In that way, jQuery and Wrap have dramatically different aims regarding support: jQuery works pretty much anywhere, and is fault-tolerant to infinite levels of developer happiness... Wrap: not so much. It only supports a subset of the nice things jQuery does, and almost that entire subset is optional. That combined with its browser support qualifications allow it to be a very small library, ideal – we find – for cross-device progressive enhancement.
+Wrap is currently in development and may not be ready for production use yet. Within the Southstreet workflow at Filament Group, we would use Wrap on for enhancing the user experience by manipulating markup, making Ajax requests, and any other common tasks one would do when using an unobtrusive JavaScript DOM framework.
+
+Wrap is inspired by the jQuery API, letting you find elements and manipulate them. However, Wrap is written in such a way that it'll only do anything at all in modern browsers, like Internet Explorer 8 and up. Other browsers? They'll get a less-enhanced experience. There won't be errors, but there may be less _zing_. Assuming you're already building applications with Progressive Enhancement, you should be fine without JavaScript enhancements. In that way, jQuery and Wrap have dramatically different aims regarding support: jQuery works pretty much anywhere, and is fault-tolerant to infinite levels of developer happiness... Wrap: not so much. It only supports a subset of the nice things jQuery does, and almost that entire subset is optional. That combined with its browser support qualifications allow it to be a very small library, ideal – we find – for cross-device progressive enhancement.
 
 Technically, `wrap.js` itself is a simple, small (half a kb), extendable core function. Basically, you use Wrap like you use jQuery (just reference the `wrap` variable instead of `$` or `jQuery`), but it doesn't come with much more than a means of finding and generating HTML multiple elements, a DOM-ready handler, and a few essential element-iterating methods like `each`, `find`, `children`. Using its API, Wrap is simple to extend further, and many extensions are available in the Wrap project for you to include in your build.
 
@@ -92,7 +94,7 @@ Check out the [Wrap project readme](https://github.com/filamentgroup/wrap#readme
 
 ## AjaxInclude
 
-[AjaxInclude](https://github.com/filamentgroup/ajaxinclude), the final tool in our Progressive Enhancement stack, shapes the way we think about content and document construction in a major way. AjaxInclude uses the Wrap (or jQuery if you prefer) API to bring the concept of an "include" to HTML, allowing us to deliver lightweight web pages that contain only the most essential content, and lazy-loading additional content automatically via JavaScript.
+[AjaxInclude](https://github.com/filamentgroup/ajaxinclude), the final tool in our Progressive Enhancement stack, shapes the way we think about content and document construction in a major way. AjaxInclude uses the jQuery (or Wrap if you don't otherwise need jQuery) API to bring the concept of an "include" to HTML, allowing us to deliver lightweight web pages that contain only the most essential content, and lazy-loading additional content automatically via JavaScript.
 
 AjaxInclude works by referencing external fragments of HTML content via HTML5 data attributes. For example:
 
@@ -120,7 +122,7 @@ AjaxInclude expects the concatenator's response to wrap each HTML file in an ide
 
 ## Picturefill
 
-[Picturefill](https://github.com/filamentgroup/picturefill), while listed last in the Southstreet lineup is perhaps the most critical piece of all with regards to optimization. When serving content images in HTML, developers have no native options in 
+[Picturefill](https://github.com/filamentgroup/picturefill/tree/div-markup), while listed last in the Southstreet lineup is perhaps the most critical piece of all with regards to optimization. When serving content images in HTML, developers have no native options in 
 HTML to deliver a context-appropriate image size, and that limitation requires us to apply server-based workarounds, or swap images with JavaScript and potentially load more than we need on many devices. Recently, Filament Group (and in particular, our own Mat Marquis), has led the charge in the creation of a new HTML element to solve this dilemma. How this element will take shape in a future spec is still being discussed, so in the interim, we have Picturefill. 
 
 Picturefill was originally developed to match a proposed `picture` element's behavior, but since the `picture` element is currently - and potentially will always be - non-standard, we have developed a `div`-based approach that we'd recommend for use today. 
