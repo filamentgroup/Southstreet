@@ -8,7 +8,7 @@ Our Southstreet workflow utilizes the following tools, all of which are independ
 - [Enhance](https://github.com/filamentgroup/enhance): a tiny JavaScript framework designed to help developers determine if a browser is capable of handling additional JavaScript and CSS enhancements, and load specific enhancements for that browser as fast and simply as possible.
 - [eCSSential](https://github.com/filamentgroup/eCSSential): an experimental utility for making browsers load responsive CSS in a more responsible way.
 - [QuickConcat](https://github.com/filamentgroup/quickconcat): a simple dynamic concatenator for html, css, and js files, written in PHP
-- [Wrap](https://github.com/filamentgroup/wrap): a modular JavaScript library for DOM manipulation and Ajax, inspired by the jQuery API
+- Wrap: a simple JavaScript utility for DOM manipulation and Ajax wrapped in a familiar API. (*not yet released)
 - [AjaxInclude](https://github.com/filamentgroup/Ajax-Include-Pattern/): a plugin that is designed for modular content construction, that runs on Wrap (or jQuery)
 - [AppendAround](https://github.com/filamentgroup/AppendAround): A JavaScript pattern for responsive, roving markup.
 - [Picturefill](https://github.com/filamentgroup/picturefill/tree/div-markup): a simple pattern for overhead-free responsive images today.
@@ -81,17 +81,16 @@ With `enhance.js` and `quickconcat.php` covered, we can move on to the actual en
 
 ## Wrap
 
-[Wrap](https://github.com/filamentgroup/wrap) is a simple framework of DOM utilities that is designed to target modern browsers without failing the rest. 
+Wrap is a simple framework of DOM utilities that is designed to target modern browsers without failing the rest. 
 
 Wrap is aimed particularly at cases where you need a small set of JS utilities but not a full toolkit. It's a throwback to the days of using a simple set of utilities that you need, and nothing more, but it's "wrapped" in a handy API.
 
-Wrap is currently in development and may not be ready for production use yet. Within the Southstreet workflow at Filament Group, we would use Wrap on for enhancing the user experience by manipulating markup, making Ajax requests, and any other common tasks one would do when using an unobtrusive JavaScript DOM framework.
+Within the Southstreet workflow at Filament Group, we would use Wrap on for enhancing the user experience by manipulating markup, making Ajax requests, and any other common tasks one would do when using an unobtrusive JavaScript DOM framework.
 
 Wrap is inspired by the jQuery API, letting you find elements and manipulate them. However, Wrap is written in such a way that it'll only do anything at all in modern browsers, like Internet Explorer 8 and up. Other browsers? They'll get a less-enhanced experience. There won't be errors, but there may be less _zing_. Assuming you're already building applications with Progressive Enhancement, you should be fine without JavaScript enhancements. In that way, jQuery and Wrap have dramatically different aims regarding support: jQuery works pretty much anywhere, and is fault-tolerant to infinite levels of developer happiness... Wrap: not so much. It only supports a subset of the nice things jQuery does, and almost that entire subset is optional. That combined with its browser support qualifications allow it to be a very small library, ideal – we find – for cross-device progressive enhancement.
 
-Technically, `wrap.js` itself is a simple, small (half a kb), extendable core function. Basically, you use Wrap like you use jQuery (just reference the `wrap` variable instead of `$` or `jQuery`), but it doesn't come with much more than a means of finding and generating HTML multiple elements, a DOM-ready handler, and a few essential element-iterating methods like `each`, `find`, `children`. Using its API, Wrap is simple to extend further, and many extensions are available in the Wrap project for you to include in your build.
+Wrap is currently in private development but will likely be made public soon. 
 
-Check out the [Wrap project readme](https://github.com/filamentgroup/wrap#readme) for more information on use. 
 
 ## AjaxInclude
 
