@@ -15,7 +15,7 @@ Our Southstreet workflow utilizes the following tools, all of which are independ
 
 Together these tools form the core of Filament Group's progressive enhancement workflow. The scope of these individual projects vary widely, but they all share a common goal of serving front-end code faster, either by preventing or deferring the loading of code and assets that are not essential to the device, or by offering light-weight alternatives to common patterns. 
 
-Please note also that we often use these projects in conjunction with other related tools that don't necessarily fit under the Southstreet umbrella. Check out the [related projects](#related) at the bottom for more of these.
+Please note also that we often use these projects in conjunction with other related tools that don't necessarily fit under the Southstreet umbrella. Check out the [related projects](https://github.com/filamentgroup/Southstreet/blob/master/README.md#related-filament-group-projects) at the bottom for more of these.
 
 For demonstration purposes, the `_tmpl` folder of this repository contains a working example of these tools working together.
 
