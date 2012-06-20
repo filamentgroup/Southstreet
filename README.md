@@ -11,7 +11,7 @@ Our SouthStreet workflow utilizes the following tools, all of which are independ
 - Wrap: a simple JavaScript utility for DOM manipulation and Ajax wrapped in a familiar API. (*not yet released)
 - [AjaxInclude](https://github.com/filamentgroup/Ajax-Include-Pattern/): a plugin that is designed for modular content construction, that runs on Wrap (or jQuery)
 - [AppendAround](https://github.com/filamentgroup/AppendAround): A JavaScript pattern for responsive, roving markup.
-- [Picturefill](https://github.com/filamentgroup/picturefill/tree/div-markup): a simple pattern for overhead-free responsive images today.
+- [Picturefill](https://github.com/scottjehl/picturefill/): a simple pattern for overhead-free responsive images today.
 
 Together these tools form the core of Filament Group's progressive enhancement workflow. The scope of these individual projects vary widely, but they all share a common goal of serving front-end code faster, either by preventing or deferring the loading of code and assets that are not essential to the device, or by offering light-weight alternatives to common patterns. 
 
@@ -127,7 +127,7 @@ AjaxInclude expects the concatenator's response to wrap each HTML file in an ide
 
 ## Picturefill
 
-[Picturefill](https://github.com/filamentgroup/picturefill/tree/div-markup), while listed last in the SouthStreet lineup is perhaps the most critical piece of all with regards to optimization. When serving content images in HTML, developers have no native options in 
+[Picturefill](https://github.com/scottjehl/picturefill/), while listed last in the SouthStreet lineup is perhaps the most critical piece of all with regards to optimization. When serving content images in HTML, developers have no native options in 
 HTML to deliver a context-appropriate image size, and that limitation requires us to apply server-based workarounds, or swap images with JavaScript and potentially load more than we need on many devices. Recently, Filament Group (and in particular, our own Mat Marquis), has led the charge in the creation of a new HTML element to solve this dilemma. How this element will take shape in a future spec is still being discussed, so in the interim, we have Picturefill. 
 
 Picturefill was originally developed to match a proposed `picture` element's behavior, but since the `picture` element is currently - and potentially will always be - non-standard, we have developed a `div`-based approach that we'd recommend for use today. 
