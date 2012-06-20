@@ -1,9 +1,9 @@
-# Southstreet Progressive Enhancement Workflow
+# SouthStreet Progressive Enhancement Workflow
 ## Our tools and workflow for building fast and accessible cross-device web applications
 
-Southstreet is a set of tools that combine to form the core of a progressive enhancement workflow developed at [Filament Group](http://filamentgroup.com). This workflow is designed to help us (and other developers too!) deliver rich web experiences that are accessible to the widest range of devices possible, and catered to the capabilities and constraints of each device. 
+SouthStreet is a set of tools that combine to form the core of a progressive enhancement workflow developed at [Filament Group](http://filamentgroup.com). This workflow is designed to help us (and other developers too!) deliver rich web experiences that are accessible to the widest range of devices possible, and catered to the capabilities and constraints of each device. 
 
-Our Southstreet workflow utilizes the following tools, all of which are independent Github projects themselves.  
+Our SouthStreet workflow utilizes the following tools, all of which are independent Github projects themselves.  
 
 - [Enhance](https://github.com/filamentgroup/enhance): a tiny JavaScript framework designed to help developers determine if a browser is capable of handling additional JavaScript and CSS enhancements, and load specific enhancements for that browser as fast and simply as possible.
 - [eCSSential](https://github.com/filamentgroup/eCSSential): an experimental utility for making browsers load responsive CSS in a more responsible way.
@@ -15,11 +15,11 @@ Our Southstreet workflow utilizes the following tools, all of which are independ
 
 Together these tools form the core of Filament Group's progressive enhancement workflow. The scope of these individual projects vary widely, but they all share a common goal of serving front-end code faster, either by preventing or deferring the loading of code and assets that are not essential to the device, or by offering light-weight alternatives to common patterns. 
 
-Please note also that we often use these projects in conjunction with other related tools that don't necessarily fit under the Southstreet umbrella. Check out the [related projects](https://github.com/filamentgroup/Southstreet/blob/master/README.md#related-filament-group-projects) at the bottom for more of these.
+Please note also that we often use these projects in conjunction with other related tools that don't necessarily fit under the SouthStreet umbrella. Check out the [related projects](https://github.com/filamentgroup/Southstreet/blob/master/README.md#related-filament-group-projects) at the bottom for more of these.
 
 For demonstration purposes, the `_tmpl` folder of this repository contains a working example of these tools working together.
 
-Please note that while these tools do represent key components of our overall approach, their applicability to a particular project always varies, and these particular projects are not always the best tool for the job at hand. Depending on whether a particular tool makes sense for the problem we're solving, we will often use alternative tools that provide similar functionality instead. For example, we commonly use jQuery instead of Wrap (below), as Wrap provides a small subset of jQuery's featureset, and is not always appropriate for the needs of our projects. In essence, the projects in Southstreet are developed with a goal of ease of use and compatibility, but they should always be evaluated against other potential solutions. 
+Please note that while these tools do represent key components of our overall approach, their applicability to a particular project always varies, and these particular projects are not always the best tool for the job at hand. Depending on whether a particular tool makes sense for the problem we're solving, we will often use alternative tools that provide similar functionality instead. For example, we commonly use jQuery instead of Wrap (below), as Wrap provides a small subset of jQuery's featureset, and is not always appropriate for the needs of our projects. In essence, the projects in SouthStreet are developed with a goal of ease of use and compatibility, but they should always be evaluated against other potential solutions. 
 
 Let's break down the role that each one plays.
 
@@ -36,7 +36,7 @@ Typically, a site that uses Enhance will start by including (anywhere in the pag
 
 For an example of how this process actually breaks down in JavaScript, check out the `enhance.config.js` file in this repository.
 
-_Note that while Enhance is capable of loading CSS in addition to JavaScript, loading CSS in this fashion can cause undesirable results because it will likely arrive after the website has begun rendering, causing a flash of unstyled content when its styles snap into place. Because of this, you'll want to include any CSS that's essential to rendering the page being requested via the `head` of the page, through a traditional `style` tag, or use eCSSential, explained below. This limitation means `enhance.js` is more useful for loading JavaScript files, and with the recent addition of eCSSential to the Southstreet workflow, we're likely to remove the CSS-related features from Enhance._
+_Note that while Enhance is capable of loading CSS in addition to JavaScript, loading CSS in this fashion can cause undesirable results because it will likely arrive after the website has begun rendering, causing a flash of unstyled content when its styles snap into place. Because of this, you'll want to include any CSS that's essential to rendering the page being requested via the `head` of the page, through a traditional `style` tag, or use eCSSential, explained below. This limitation means `enhance.js` is more useful for loading JavaScript files, and with the recent addition of eCSSential to the SouthStreet workflow, we're likely to remove the CSS-related features from Enhance._
 
 All of these tasks can be facilitated simply through the [`enhance.js` `api`](https://github.com/filamentgroup/enhance/blob/master/_docs/API.md). However, Enhance.js itself does not handle the server-side concatenation that it is designed to interface with. Nor does it handle the application of enhancements itself. We'll get to those in a bit...
 
@@ -87,7 +87,7 @@ Wrap is a simple framework of DOM utilities that is designed to target modern br
 
 Wrap is aimed particularly at cases where you need a small set of JS utilities but not a full toolkit. It's a throwback to the days of using a simple set of utilities that you need, and nothing more, but it's "wrapped" in a handy API.
 
-Within the Southstreet workflow at Filament Group, we would use Wrap on for enhancing the user experience by manipulating markup, making Ajax requests, and any other common tasks one would do when using an unobtrusive JavaScript DOM framework.
+Within the SouthStreet workflow at Filament Group, we would use Wrap on for enhancing the user experience by manipulating markup, making Ajax requests, and any other common tasks one would do when using an unobtrusive JavaScript DOM framework.
 
 Wrap is inspired by the jQuery API, letting you find elements and manipulate them. However, Wrap is written in such a way that it'll only do anything at all in modern browsers, like Internet Explorer 8 and up. Other browsers? They'll get a less-enhanced experience. There won't be errors, but there may be less _zing_. Assuming you're already building applications with Progressive Enhancement, you should be fine without JavaScript enhancements. In that way, jQuery and Wrap have dramatically different aims regarding support: jQuery works pretty much anywhere, and is fault-tolerant to infinite levels of developer happiness... Wrap: not so much. It only supports a subset of the nice things jQuery does, and almost that entire subset is optional. That combined with its browser support qualifications allow it to be a very small library, ideal – we find – for cross-device progressive enhancement.
 
@@ -127,7 +127,7 @@ AjaxInclude expects the concatenator's response to wrap each HTML file in an ide
 
 ## Picturefill
 
-[Picturefill](https://github.com/filamentgroup/picturefill/tree/div-markup), while listed last in the Southstreet lineup is perhaps the most critical piece of all with regards to optimization. When serving content images in HTML, developers have no native options in 
+[Picturefill](https://github.com/filamentgroup/picturefill/tree/div-markup), while listed last in the SouthStreet lineup is perhaps the most critical piece of all with regards to optimization. When serving content images in HTML, developers have no native options in 
 HTML to deliver a context-appropriate image size, and that limitation requires us to apply server-based workarounds, or swap images with JavaScript and potentially load more than we need on many devices. Recently, Filament Group (and in particular, our own Mat Marquis), has led the charge in the creation of a new HTML element to solve this dilemma. How this element will take shape in a future spec is still being discussed, so in the interim, we have Picturefill. 
 
 Picturefill was originally developed to match a proposed `picture` element's behavior, but since the `picture` element is currently - and potentially will always be - non-standard, we have developed a `div`-based approach that we'd recommend for use today. 
@@ -137,11 +137,11 @@ Picturefill allows us to reference several sources for a particular image in an 
 
 ## Recap
 
-The tools above combine to form the backbone of the Southstreet workflow. Now that you understand the foundations, seeing it all in action should bring additional clarity. This repository includes a demo ([_demo.html](https://github.com/filamentgroup/enhance/blob/master/_demo.html)) that uses "Enhance" and "QuickConcat" to conditionally load a set of JavaScript and CSS files. If you check out the repo and run it on a web server, you'll get the full effect. We'll look to improve the demo further to utilize Wrap and AjaxInclude as well soon, but this should give you a good idea of how things can work.
+The tools above combine to form the backbone of the SouthStreet workflow. Now that you understand the foundations, seeing it all in action should bring additional clarity. This repository includes a demo ([_demo.html](https://github.com/filamentgroup/enhance/blob/master/_demo.html)) that uses "Enhance" and "QuickConcat" to conditionally load a set of JavaScript and CSS files. If you check out the repo and run it on a web server, you'll get the full effect. We'll look to improve the demo further to utilize Wrap and AjaxInclude as well soon, but this should give you a good idea of how things can work.
 
 ## Related Filament Group Projects
 
-Filament Group actively develops and contributes to several other projects that we often find useful in our work. These aren't part of Southstreet specifically, but you may find them useful:
+Filament Group actively develops and contributes to several other projects that we often find useful in our work. These aren't part of SouthStreet specifically, but you may find them useful:
 
 - [Respond.js](https://github.com/scottjehl/Respond): CSS3 Media Query support for Internet Explorer 6-8.
 - [Hide Address bar](https://github.com/scottjehl/Hide-Address-Bar): Normalized address bar hiding for iOS & Android
