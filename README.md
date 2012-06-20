@@ -15,6 +15,8 @@ Our Southstreet workflow utilizes the following tools, all of which are independ
 
 Together these tools form the core of Filament Group's progressive enhancement workflow. The scope of these individual projects vary widely, but they all share a common goal of serving front-end code faster, either by preventing or deferring the loading of code and assets that are not essential to the device, or by offering light-weight alternatives to common patterns. 
 
+Please note also that we often use these projects in conjunction with other related tools that don't necessarily fit under the Southstreet umbrella. Check out the [related projects](#related) at the bottom for more of these.
+
 For demonstration purposes, the `_tmpl` folder of this repository contains a working example of these tools working together.
 
 Please note that while these tools do represent key components of our overall approach, their applicability to a particular project always varies, and these particular projects are not always the best tool for the job at hand. Depending on whether a particular tool makes sense for the problem we're solving, we will often use alternative tools that provide similar functionality instead. For example, we commonly use jQuery instead of Wrap (below), as Wrap provides a small subset of jQuery's featureset, and is not always appropriate for the needs of our projects. In essence, the projects in Southstreet are developed with a goal of ease of use and compatibility, but they should always be evaluated against other potential solutions. 
@@ -133,7 +135,32 @@ Picturefill was originally developed to match a proposed `picture` element's beh
 Picturefill allows us to reference several sources for a particular image in an HTML document, and based on which source's media query matches, Picturefill will load only one image appropriate to that context (and reevaluate whenever the viewport dimensions change as well).
 
 
-## Wrap-up
+## Recap
 
 The tools above combine to form the backbone of the Southstreet workflow. Now that you understand the foundations, seeing it all in action should bring additional clarity. This repository includes a demo ([_demo.html](https://github.com/filamentgroup/enhance/blob/master/_demo.html)) that uses "Enhance" and "QuickConcat" to conditionally load a set of JavaScript and CSS files. If you check out the repo and run it on a web server, you'll get the full effect. We'll look to improve the demo further to utilize Wrap and AjaxInclude as well soon, but this should give you a good idea of how things can work.
+
+## Related Filament Group Projects
+
+Filament Group actively develops and contributes to several other projects that we often find useful in our work. These aren't part of Southstreet specifically, but you may find them useful:
+
+- [Respond.js](https://github.com/scottjehl/Respond): CSS3 Media Query support for Internet Explorer 6-8.
+- [Hide Address bar](https://github.com/scottjehl/Hide-Address-Bar): Normalized address bar hiding for iOS & Android
+- [Fixed-fixed](https://github.com/filamentgroup/fixed-fixed): CSS position:fixed qualifier.
+- [Overthrow](https://github.com/scottjehl/Overthrow): A tiny, no-frills, framework-independent, targeted overflow: auto polyfill for use in responsive design.
+- [RWD Nav Patterns](https://github.com/filamentgroup/RWD-Nav-Patterns): Responsive navigation patterns.
+- [MatchMedia Polyfill](https://github.com/paulirish/matchMedia.js): Run CSS3 Media Queries in JavaScript.
+- [Details Polyfill](https://github.com/filamentgroup/Details): A polyfill for the HTML5 details element.
+- [iOS OrientationChange Fix](https://github.com/scottjehl/iOS-Orientationchange-Fix): A workaround for the orientation change zoom bug found in iOS5 and older versions.
+- [Device Bugs](https://github.com/scottjehl/Device-Bugs): An open bug tracker for issues found in browsers and devices.
+- [jQuery Mobile](https://github.com/jquery/jquery-mobile): The jQuery Mobile Framework.
+- [jQuery Mobile Pagination](https://github.com/filamentgroup/jqm-pagination): Swipe-based website navigation for jQuery Mobile.
+- [Drive-In](https://github.com/scottjehl/Drive-In): A device testing theatre.
+- [Dynamic Carousel](https://github.com/Wilto/Dynamic-Carousel): A carousel plugin built for responsive layouts. 
+- [jQuery Pixel to Em Converter](https://github.com/scottjehl/jQuery-Pixel-Em-Converter): Like it says on the tin.
+- [jQuery Visualize](https://github.com/filamentgroup/jQuery-Visualize): Accessible data visualization.
+- [jQuery Tree Control](https://github.com/filamentgroup/jQuery-Tree-Control): An accessible tree control plugin.
+- [jQuery Custom Input](https://github.com/filamentgroup/jQuery-Custom-Input): Custom, accessible checks and radios.
+- [jQuery Accessible Slider](https://github.com/filamentgroup/jQuery-Slider): An accessible select/input-to-custom slider control.
+
+You can find more at our website as well. [Filament Group, Inc](http://filamentgroup.com)
 
