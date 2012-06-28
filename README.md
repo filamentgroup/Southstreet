@@ -96,7 +96,7 @@ Wrap is currently in private development but will likely be made public soon.
 
 ## AjaxInclude
 
-[AjaxInclude](https://github.com/filamentgroup/ajaxinclude), the final tool in our Progressive Enhancement stack, shapes the way we think about content and document construction in a major way. AjaxInclude uses the jQuery (or Wrap if you don't otherwise need jQuery) API to bring the concept of an "include" to HTML, allowing us to deliver lightweight web pages that contain only the most essential content, and lazy-loading additional content automatically via JavaScript.
+[AjaxInclude](https://github.com/filamentgroup/Ajax-Include-Pattern), the final tool in our Progressive Enhancement stack, shapes the way we think about content and document construction in a major way. AjaxInclude uses the jQuery (or Wrap if you don't otherwise need jQuery) API to bring the concept of an "include" to HTML, allowing us to deliver lightweight web pages that contain only the most essential content, and lazy-loading additional content automatically via JavaScript.
 
 AjaxInclude works by referencing external fragments of HTML content via HTML5 data attributes. For example:
 
