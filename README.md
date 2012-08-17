@@ -8,8 +8,7 @@ Our SouthStreet workflow utilizes the following tools, all of which are independ
 - [Enhance](https://github.com/filamentgroup/enhance): a tiny JavaScript framework designed to help developers determine if a browser is capable of handling additional JavaScript and CSS enhancements, and load specific enhancements for that browser as fast and simply as possible.
 - [eCSSential](https://github.com/filamentgroup/eCSSential): an experimental utility for making browsers load responsive CSS in a more responsible way.
 - [QuickConcat](https://github.com/filamentgroup/quickconcat): a simple dynamic concatenator for html, css, and js files, written in PHP
-- Wrap: a simple JavaScript utility for DOM manipulation and Ajax wrapped in a familiar API. (*not yet released)
-- [AjaxInclude](https://github.com/filamentgroup/Ajax-Include-Pattern/): a plugin that is designed for modular content construction, that runs on Wrap (or jQuery)
+- [AjaxInclude](https://github.com/filamentgroup/Ajax-Include-Pattern/): a plugin that is designed for modular content construction, that runs on jQuery (or our yet-to-be released Shoestring)
 - [AppendAround](https://github.com/filamentgroup/AppendAround): A JavaScript pattern for responsive, roving markup.
 - [Picturefill](https://github.com/scottjehl/picturefill/): a simple pattern for overhead-free responsive images today.
 
@@ -19,7 +18,7 @@ Please note also that we often use these projects in conjunction with other rela
 
 For demonstration purposes, the `_tmpl` folder of this repository contains a working example of these tools working together.
 
-Please note that while these tools do represent key components of our overall approach, their applicability to a particular project always varies, and these particular projects are not always the best tool for the job at hand. Depending on whether a particular tool makes sense for the problem we're solving, we will often use alternative tools that provide similar functionality instead. For example, we commonly use jQuery instead of Wrap (below), as Wrap provides a small subset of jQuery's featureset, and is not always appropriate for the needs of our projects. In essence, the projects in SouthStreet are developed with a goal of ease of use and compatibility, but they should always be evaluated against other potential solutions. 
+Please note that while these tools do represent key components of our overall approach, their applicability to a particular project always varies, and these particular projects are not always the best tool for the job at hand. Depending on whether a particular tool makes sense for the problem we're solving, we will often use alternative tools that provide similar functionality instead. For example, we commonly use jQuery instead of Shoestring (below), as Shoestring provides a small subset of jQuery's featureset, and is not always appropriate for the needs of our projects. In essence, the projects in SouthStreet are developed with a goal of ease of use and compatibility, but they should always be evaluated against other potential solutions. 
 
 Let's break down the role that each one plays.
 
@@ -81,22 +80,10 @@ In that vein, we recommend that a dynamic file concatenation tool provides at le
 
 With `enhance.js` and `quickconcat.php` covered, we can move on to the actual enhancements.
 
-## Wrap
-
-Wrap is a simple framework of DOM utilities that is designed to target modern browsers without failing the rest. 
-
-Wrap is aimed particularly at cases where you need a small set of JS utilities but not a full toolkit. It's a throwback to the days of using a simple set of utilities that you need, and nothing more, but it's "wrapped" in a handy API.
-
-Within the SouthStreet workflow at Filament Group, we would use Wrap on for enhancing the user experience by manipulating markup, making Ajax requests, and any other common tasks one would do when using an unobtrusive JavaScript DOM framework.
-
-Wrap is inspired by the jQuery API, letting you find elements and manipulate them. However, Wrap is written in such a way that it'll only do anything at all in modern browsers, like Internet Explorer 8 and up. Other browsers? They'll get a less-enhanced experience. There won't be errors, but there may be less _zing_. Assuming you're already building applications with Progressive Enhancement, you should be fine without JavaScript enhancements. In that way, jQuery and Wrap have dramatically different aims regarding support: jQuery works pretty much anywhere, and is fault-tolerant to infinite levels of developer happiness... Wrap: not so much. It only supports a subset of the nice things jQuery does, and almost that entire subset is optional. That combined with its browser support qualifications allow it to be a very small library, ideal – we find – for cross-device progressive enhancement.
-
-Wrap is currently in private development but will likely be made public soon. 
-
 
 ## AjaxInclude
 
-[AjaxInclude](https://github.com/filamentgroup/ajaxinclude), the final tool in our Progressive Enhancement stack, shapes the way we think about content and document construction in a major way. AjaxInclude uses the jQuery (or Wrap if you don't otherwise need jQuery) API to bring the concept of an "include" to HTML, allowing us to deliver lightweight web pages that contain only the most essential content, and lazy-loading additional content automatically via JavaScript.
+[AjaxInclude](https://github.com/filamentgroup/ajaxinclude), the final tool in our Progressive Enhancement stack, shapes the way we think about content and document construction in a major way. AjaxInclude uses the jQuery (or our not-yet-public Shoestring if you don't otherwise need jQuery) API to bring the concept of an "include" to HTML, allowing us to deliver lightweight web pages that contain only the most essential content, and lazy-loading additional content automatically via JavaScript.
 
 AjaxInclude works by referencing external fragments of HTML content via HTML5 data attributes. For example:
 
@@ -137,7 +124,7 @@ Picturefill allows us to reference several sources for a particular image in an 
 
 ## Recap
 
-The tools above combine to form the backbone of the SouthStreet workflow. Now that you understand the foundations, seeing it all in action should bring additional clarity. This repository includes a demo ([_demo.html](https://github.com/filamentgroup/enhance/blob/master/_demo.html)) that uses "Enhance" and "QuickConcat" to conditionally load a set of JavaScript and CSS files. If you check out the repo and run it on a web server, you'll get the full effect. We'll look to improve the demo further to utilize Wrap and AjaxInclude as well soon, but this should give you a good idea of how things can work.
+The tools above combine to form the backbone of the SouthStreet workflow. Now that you understand the foundations, seeing it all in action should bring additional clarity. This repository includes a demo ([_demo.html](https://github.com/filamentgroup/enhance/blob/master/_demo.html)) that uses "Enhance" and "QuickConcat" to conditionally load a set of JavaScript and CSS files. If you check out the repo and run it on a web server, you'll get the full effect. We'll look to improve the demo further to utilize Shoestring and AjaxInclude as well soon, but this should give you a good idea of how things can work.
 
 ## Related Filament Group Projects
 
