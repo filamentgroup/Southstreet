@@ -83,7 +83,7 @@ With `enhance.js` and `quickconcat.php` covered, we can move on to the actual en
 
 ## AjaxInclude
 
-[AjaxInclude](https://github.com/filamentgroup/ajaxinclude), the final tool in our Progressive Enhancement stack, shapes the way we think about content and document construction in a major way. AjaxInclude uses the jQuery (or our not-yet-public Shoestring if you don't otherwise need jQuery) API to bring the concept of an "include" to HTML, allowing us to deliver lightweight web pages that contain only the most essential content, and lazy-loading additional content automatically via JavaScript.
+[AjaxInclude](https://github.com/filamentgroup/Ajax-Include-Pattern) shapes the way we think about content and document construction in a major way. AjaxInclude uses the jQuery (or our not-yet-public Shoestring if you don't otherwise need jQuery) API to bring the concept of an "include" to HTML, allowing us to deliver lightweight web pages that contain only the most essential content, and lazy-loading additional content automatically via JavaScript.
 
 AjaxInclude works by referencing external fragments of HTML content via HTML5 data attributes. For example:
 
