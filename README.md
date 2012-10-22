@@ -37,7 +37,7 @@ For an example of how this process actually breaks down in JavaScript, check out
 
 _Note that while Enhance is capable of loading CSS in addition to JavaScript, loading CSS in this fashion can cause undesirable results because it will likely arrive after the website has begun rendering, causing a flash of unstyled content when its styles snap into place. Because of this, you'll want to include any CSS that's essential to rendering the page being requested via the `head` of the page, through a traditional `style` tag, or use eCSSential, explained below. This limitation means `enhance.js` is more useful for loading JavaScript files, and with the recent addition of eCSSential to the SouthStreet workflow, we're likely to remove the CSS-related features from Enhance._
 
-All of these tasks can be facilitated simply through the [`enhance.js` `api`](https://github.com/filamentgroup/enhance/blob/master/_docs/API.md). However, Enhance.js itself does not handle the server-side concatenation that it is designed to interface with. Nor does it handle the application of enhancements itself. We'll get to those in a bit...
+All of these tasks can be facilitated simply through the [`enhance.js` `api`](https://github.com/filamentgroup/enhance#api). However, Enhance.js itself does not handle the server-side concatenation that it is designed to interface with. Nor does it handle the application of enhancements itself. We'll get to those in a bit...
 
 ## eCSSential
 
