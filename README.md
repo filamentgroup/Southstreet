@@ -1,4 +1,7 @@
 # SouthStreet Progressive Enhancement Workflow
+
+[![Filament Group](http://filamentgroup.com/images/fg-logo-positive-sm-crop.png) ](http://www.filamentgroup.com/)
+
 ## Our tools and workflow for building fast and accessible cross-device web applications
 
 SouthStreet is a set of tools that combine to form the core of a progressive enhancement workflow developed at [Filament Group](http://filamentgroup.com). This workflow is designed to help us (and other developers too!) deliver rich web experiences that are accessible to the widest range of devices possible, and catered to the capabilities and constraints of each device. 
