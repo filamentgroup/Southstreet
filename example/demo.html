@@ -1,24 +1,22 @@
----
----
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Sample template</title>
-		<meta name="fullcss"  content="css/full.css">
-		<meta name="fulljs"  content="/js/shoestring.ajaxinclude.enhancements.js">
+		<meta name="fullcss"  content="assets/css/full.css">
+		<meta name="fulljs"  content="assets/js/shoestring.ajaxinclude.enhancements.js">
 		<script>
 			{% include enhance.js %}
 		</script>
 		<!--#if expr="$HTTP_COOKIE=/fullcss\=true/" -->
-		<link rel="stylesheet" href="css/full.css">
+		<link rel="stylesheet" href="assets/css/full.css">
 		<!--#else -->
 		<style>
 			/* critical CSS styles for this template go here... */
 			{% include critical.css %}
 		</style>
-		<noscript><link rel="stylesheet" href="css/full.css"></noscript>
+		<noscript><link rel="stylesheet" href="assets/css/full.css"></noscript>
 	<!--#endif -->
 	</head>
 	<body>
@@ -28,7 +26,7 @@
 			<p>If this browser's experience is enhanced, you'll see some notes on what's been added below. The messages are added by the files that have been included.</p>
 		</div>
 
-		<div data-replace="sample-fragment.html"></div>
+		<div data-replace="assets/sample-fragment.html"></div>
 
 	</body>
 </html>
