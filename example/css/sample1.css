@@ -1,7 +1,0 @@
-
-
-p.general:after {
-	display:block;
-	content: "sample1.css was loaded because it is meant for all enhanced browsers.";
-	margin-top: 1em;
-}
