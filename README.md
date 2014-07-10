@@ -6,7 +6,7 @@
 
 SouthStreet is a set of tools that combine to form the progressive enhancement workflow we use on projects at [Filament Group](http://filamentgroup.com). This workflow is designed to help us deliver modern web experiences that are accessible to the widest range of devices possible.
 
-While we have [many open-source projects related to cross-device usability](http://filamentgroup.com/code/), Southstreet is focused particularly on the process of delivering enhancements efficiently so that users receive a page that works as soon as possible.
+While we have [many open-source projects related to cross-device usability](http://filamentgroup.com/code/), SouthStreet is focused particularly on the process of delivering enhancements efficiently so that users receive a page that works as soon as possible.
 
 Our SouthStreet workflow utilizes the following tools, all of which are independent Github projects themselves.  
 
@@ -28,11 +28,11 @@ Let's break down the role that each one plays.
 
 ## Initial Page Load Tools
 
-The following Southstreet tools are used in the initial page load step.
+The following SouthStreet tools are used in the initial page load step.
 
 ## Enhance (v2)
 
-[Enhance](https://github.com/filamentgroup/enhance) is a tiny JavaScript boilerplate designed to help developers keep overhead low while delivering enhancements to differing devices and device categories. Technically speaking, the role of Enhance is to determine if a browser is broadly capable of handling additional JavaScript and CSS enhancements, and then load specific enhancements for that browser as fast and simply as possible. Enhance is designed to be delete-key-friendly, but it includes a few other Southstreet projects inside it for convenience (namely, [loadCSS](https://github.com/filamentgroup/loadCSS), [loadJS](https://github.com/filamentgroup/loadJS), and [cookie](https://github.com/filamentgroup/cookie)).
+[Enhance](https://github.com/filamentgroup/enhance) is a tiny JavaScript boilerplate designed to help developers keep overhead low while delivering enhancements to differing devices and device categories. Technically speaking, the role of Enhance is to determine if a browser is broadly capable of handling additional JavaScript and CSS enhancements, and then load specific enhancements for that browser as fast and simply as possible. Enhance is designed to be delete-key-friendly, but it includes a few other SouthStreet projects inside it for convenience (namely, [loadCSS](https://github.com/filamentgroup/loadCSS), [loadJS](https://github.com/filamentgroup/loadJS), and [cookie](https://github.com/filamentgroup/cookie)).
 
 Typically, a site that uses Enhance will start by including `enhance.js` directly in the `head` of the page -inline, not an external reference. Within `enhance.js`, the following steps are often taken:
 
@@ -55,7 +55,7 @@ For examples of how we recommend configuring the `head` of a page to use Enhance
 
 # Secondary Enhancement JavaScript Files
 
-The following Southstreet scripts are typically loaded in a qualified manner by EnhanceJS, after bundling them in a single file amongst any other scripts we may need. These are part of Southstreet purely because they serve the purpose of facilitating further enhancements to a page (by fetching assets conditionally).
+The following SouthStreet scripts are typically loaded in a qualified manner by EnhanceJS, after bundling them in a single file amongst any other scripts we may need. These are part of SouthStreet purely because they serve the purpose of facilitating further enhancements to a page (by fetching assets conditionally).
 
 ## AjaxInclude
 
