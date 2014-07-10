@@ -1,0 +1,9 @@
+body {
+	font-family: sans-serif;
+	margin: 50px 30%;
+	line-height: 1.3;
+}
+.explain {
+	border-bottom: 1px dotted #333;
+	padding-bottom: 2em;
+}
