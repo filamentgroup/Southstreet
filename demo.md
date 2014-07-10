@@ -1,3 +1,6 @@
+---
+title: sample template
+---
 <!DOCTYPE html>
 <html>
 	<head>
