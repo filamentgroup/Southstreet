@@ -1,23 +1,24 @@
-# SouthStreet Progressive Enhancement Workflow
+# SouthStreet Workflow
 
 [![Filament Group](http://filamentgroup.com/images/fg-logo-positive-sm-crop.png) ](http://www.filamentgroup.com/)
 
 ## Our tools and workflow for building fast and accessible cross-device web applications
 
-SouthStreet is a set of tools that combine to form the core of a progressive enhancement workflow developed at [Filament Group](http://filamentgroup.com). This workflow is designed to help us (and other developers too!) deliver rich web experiences that are accessible to the widest range of devices possible, and catered to the capabilities and constraints of each device. 
+SouthStreet is a set of tools that combine to form the progressive enhancement workflow we use on projects at [Filament Group](http://filamentgroup.com). This workflow is designed to help us deliver modern web experiences that are accessible to the widest range of devices possible.
+
+While we have [many open-source projects related to cross-device usability](http://filamentgroup.com/code/), SouthStreet is focused particularly on the process of delivering enhancements efficiently so that users receive a page that works as soon as possible.
 
 Our SouthStreet workflow utilizes the following tools, all of which are independent Github projects themselves.  
 
-- [Enhance](https://github.com/filamentgroup/enhance): a tiny JavaScript framework designed to help developers determine if a browser is capable of handling additional JavaScript and CSS enhancements, and load specific enhancements for that browser as fast and simply as possible.
-- [eCSSential](https://github.com/filamentgroup/eCSSential): an experimental utility for making browsers load responsive CSS in a more responsible way.
-- [QuickConcat](https://github.com/filamentgroup/quickconcat): a simple dynamic concatenator for html, css, and js files, written in PHP
-- [AjaxInclude](https://github.com/filamentgroup/Ajax-Include-Pattern/): a plugin that is designed for modular content construction, that runs on jQuery (or our yet-to-be released Shoestring)
-- [AppendAround](https://github.com/filamentgroup/AppendAround): A JavaScript pattern for responsive, roving markup.
-- [Picturefill](https://github.com/scottjehl/picturefill/): a simple pattern for overhead-free responsive images today.
+- [Enhance](https://github.com/filamentgroup/enhance): a small JavaScript boilerplate designed to help determine if a browser is capable of handling additional user interface enhancements, and load specific enhancements for that browser as fast and simply as possible.
+- [loadCSS](https://github.com/filamentgroup/loadCSS): A function for loading CSS asynchronously.
+- [loadJS](https://github.com/filamentgroup/loadJS): A function for loading JS asynchronously.
+- [cookie](https://github.com/filamentgroup/cookie): Get, set, or forget cookies.
+- [criticalCSS](https://github.com/filamentgroup/criticalcss/): A command-line tool for extracting critical CSS for a page. (we use this with [grunt-criticalCSS](https://github.com/filamentgroup/grunt-criticalcss/))
+- [AjaxInclude](https://github.com/filamentgroup/Ajax-Include-Pattern/): a plugin that is designed for modular content construction, that runs on jQuery (or our yet-to-be released Shoestring DOM utility)
+- [Picturefill](https://github.com/scottjehl/picturefill/): A responsive images polyfill.
 
 Together these tools form the core of Filament Group's progressive enhancement workflow. The scope of these individual projects vary widely, but they all share a common goal of serving front-end code faster, either by preventing or deferring the loading of code and assets that are not essential to the device, or by offering light-weight alternatives to common patterns. 
-
-Please note also that we often use these projects in conjunction with other related tools that don't necessarily fit under the SouthStreet umbrella. Check out the [related projects](https://github.com/filamentgroup/Southstreet/blob/master/README.md#related-filament-group-projects) at the bottom for more of these.
 
 For demonstration purposes, the `_tmpl` folder of this repository contains a working example of these tools working together.
 
@@ -25,64 +26,36 @@ Please note that while these tools do represent key components of our overall ap
 
 Let's break down the role that each one plays.
 
+## Initial Page Load Tools
+
+The following SouthStreet tools are used in the initial page load step.
+
 ## Enhance (v2)
 
-[Enhance](https://github.com/filamentgroup/enhance) is a tiny JavaScript utility designed to help developers keep overhead low while delivering enhancements to differing devices and device categories. Technically speaking, the role of Enhance is to determine if a browser is broadly capable of handling additional JavaScript and CSS enhancements, and then load specific enhancements for that browser as fast and simply as possible. `Enhance` provides [an API](https://github.com/filamentgroup/enhance/#readme) for some simple tasks such as checking whether an element has a particular classname, and assembling and requesting JavaScript and CSS files via a single, concatenated request. 
+[Enhance](https://github.com/filamentgroup/enhance) is a tiny JavaScript boilerplate designed to help developers keep overhead low while delivering enhancements to differing devices and device categories. Technically speaking, the role of Enhance is to determine if a browser is broadly capable of handling additional JavaScript and CSS enhancements, and then load specific enhancements for that browser as fast and simply as possible. Enhance is designed to be delete-key-friendly, but it includes a few other SouthStreet projects inside it for convenience (namely, [loadCSS](https://github.com/filamentgroup/loadCSS), [loadJS](https://github.com/filamentgroup/loadJS), and [cookie](https://github.com/filamentgroup/cookie)).
 
-Typically, a site that uses Enhance will start by including (anywhere in the page, or in the `head` if necessary) at least two JavaScript files that will drive the progressive enhancement process: `enhance.js`, and a custom file that uses the `enhance.js` API to configure and enhance the user experience (or not) based on various conditions: for example purposes, we'll call that custom file `enhance.config.js`. The role of `enhance.config.js` is to determine if – and with which files – a browser's experience should be enhanced. Within `enhance.config.js`, the following steps might be taken:
+Typically, a site that uses Enhance will start by including `enhance.js` directly in the `head` of the page -inline, not an external reference. Within `enhance.js`, the following steps are often taken:
 
-* Determine if a browser is broadly qualified enhancements and if not, exit early (a broad qualification might consist of detecting `document.querySelectorAll` support, CSS3 Media Queries support, or any other technology critical to an application's enhanced experience)
-* Reference the JavaScript files that may potentially be loaded
-* Queue certain files for loading based on various environmental conditions, browser capabilities, screen size, markup conditions, and more.
-* Enhance the page by loading those files via a single, concatenated request.
-
-For an example of how this process actually breaks down in JavaScript, check out the `enhance.config.js` file in this repository.
-
-_Note that while Enhance is capable of loading CSS in addition to JavaScript, loading CSS in this fashion can cause undesirable results because it will likely arrive after the website has begun rendering, causing a flash of unstyled content when its styles snap into place. Because of this, you'll want to include any CSS that's essential to rendering the page being requested via the `head` of the page, through a traditional `style` tag, or use eCSSential, explained below. This limitation means `enhance.js` is more useful for loading JavaScript files, and with the recent addition of eCSSential to the SouthStreet workflow, we're likely to remove the CSS-related features from Enhance._
-
-All of these tasks can be facilitated simply through the [`enhance.js` `api`](https://github.com/filamentgroup/enhance#api). However, Enhance.js itself does not handle the server-side concatenation that it is designed to interface with. Nor does it handle the application of enhancements itself. We'll get to those in a bit...
-
-## eCSSential
-
-[eCSSential](https://github.com/filamentgroup/eCSSential) is to CSS what [Enhance](https://github.com/filamentgroup/enhance) is for JavaScript. In responsive, cross-device applications, we commonly apply CSS via CSS3 Media Queries to target certain device environments without applying in others. Unfortunately, there is no native way to do this in browsers without requiring a device to download all potentially applicable styles, and completely blocking page rendering during that time, both of which make for a great deal of overhead that grows with the complexity and applicable contexts of an application.
-
-eCSSential is an experimental workaround to address this shortcoming. Unlike Enhance, eCSSential is designed to be used via an inline script tag in the `head` of a page. This is because we want it to execute as soon as possible (thus speeding up page rendering), and because it is small enough that it's arguably worth the tradeoff in cacheability that an external resource would provide.
-
-eCSSential provides many features, but the default use-case is to drop it into the `head` of a page and call the `eCSSential()` function, passing in references to your available CSS files paired with media queries to specify their intended media context. eCSSential will parse through these and split the CSS into files that should be loaded immediately to apply in initial page rendering, and files that can be loaded lazily after the page has been shown. 
-
-eCSSential does not require the use of concatenated CSS files, but for best performance, it is designed to be used in combination with them. With that, we'll move on to concatenation.
+1. Define some variables and functions for loading assets and accessing information about the browser and markup
+2. Run one or more tests to see if a browser is qualified to load and render additional enhancements
+3.   
+	- A. If it's not qualified, exit early and do nothing more
+	- B. If it is qualified, proceed on to load additional assets, add classes to the document, etc.
 
 
-## QuickConcat
+For an example of how this process actually breaks down in JavaScript, check out the `enhance.js` file in this repository.
 
-[QuickConcat](https://github.com/filamentgroup/quickconcat) is a simple dynamic concatenator for html, css, and js files, written in PHP. Interacting with QuickConcat is simple: send it a URL containing several comma-separated filepaths, and it will combine those files and return them as a single response. It has a few simple features, described in its README, but basically, a QuickConcat URL looks something like the following:
+## CriticalCSS
+Critical CSS is a task we typically run during a build process. We use the task to evaluate every unique template in a site to determine the subset of styles in a site's CSS that are necessary to render the top portion of the page. As these styles are determined, we write them to files that are intended to be included directly in the `head` of each template, on the server-side. Inlining only these most critical of styles allows us to avoid making render-blocking requests from the `head` of the page, which dramatically increase the time it takes for a page to be usable. Once included in a template, we use EnhanceJS to request the rest of the site's CSS in a single request, and to set a cookie that tells the server on subsequent visits that the full CSS file is most likely cached now and can be referenced from the head of the page (instead of inline styles).
 
-    quickconcat.php?files=js/myfileA.js,js/myfileB.js
+Inlining CSS this way is designed to optimize the first visit to any page on a site, aiming to render a usable page in less than a second on a modern connection. It follows the recommendations from Google's Pagespeed Insights. Check out [our own site's score on PSI](https://developers.google.com/speed/pagespeed/insights/?url=filamentgroup.com) to see how well it works in action.
 
-Or better yet...
+For examples of how we recommend configuring the `head` of a page to use EnhanceJS and CriticalCSS together, check out [the EnhanceJS readme](https://github.com/filamentgroup/enhance#how-to-use), or explore the demo files in this project.
 
-    js/myfileA.js,js/myfileB.js=concat
 
-That's pretty much it; you can find the `quickconcat.php` source code along with more examples and implementation notes in the [QuickConcat project readme](https://github.com/filamentgroup/quickconcat#readme).
+# Secondary Enhancement JavaScript Files
 
-Within our PE workflow, QuickConcat is used by `Enhance.js` to combine many different JavaScript or CSS files into a single request (per language). It is also used by `AjaxInclude` to combine different HTML files (more on that below). QuickConcat can also be used manually to combine JavaScript and stylesheet references in your document. For example, a site using Enhance might start by including `enhance.js` and `enhance.config.js` like so:
-
-    <script src="/_js/lib/enhance.js,/_js/enhance.config.js"></script>
-
-...and the necessary CSS files
-
-Like many of the tools that comprise the Enhance pattern, QuickConcat is just as much a functional tool as it is a suggested pattern - the technology behind the implementation is less important than the workflow it facilitates. For small-scale production environments, quickconcat.php itself may be a suitable tool for use in a live website. However, at Filament Group, we typically only use QuickConcat during the initial development phase of a project, as it is easy to configure and get working quickly but does not include features for serving files quickly in a large-scale production environment. Early in a development phase, we commonly advise clients in building a custom file concatenation service similar to QuickConcat, but more robust and using their preferred languages, so that it can integrate tightly with their system in ways QuickConcat does not (at least by default).
-
-In that vein, we recommend that a dynamic file concatenation tool provides at least the following services when deployed in a large-scale application:
-
-1. Dynamic file concatenation via URL, combining separate files into one response via a comma-separated request (QuickConcat does this)
-2. Minify the source files before or after combination, removing whitespace, comments, and in the case of JavaScript, optimizing the code itself to reduce its weight. Many open-source tools are available for this. We’d recommend checking out the Java-based [Google Closure Compiler](http://code.google.com/closure/compiler/) and [YUI Compressor](http://developer.yahoo.com/yui/compressor/) tools, or the Node.js-based [Uglify.js](https://github.com/mishoo/UglifyJS) (of these, YUI is designed to compress CSS as well).
-3. Transfer the output file in GZIP compressed format. Most server-side environments provide tools for gzip output (see the [QuickConcat Readme](https://github.com/filamentgroup/quickconcat#readme) for an example using Apache)
-4. When a particular combination of files is requested, its output should be saved as a static resource on the site's server or CDN, and all future requests should be directed straight to that file instead of dynamically generating it again. _In this way, different devices will generate the various file combinations, and the second time a particular browser/device combo visits the site, the server can deliver that file much more efficiently. We also recommend pre-generating common file combinations during deployment so that many popular combinations will never need to be generated dynamically during a request_
-5. For use with AjaxInclude (explained below), we recommend that the concatenation tool includes a feature to wrap each file contents in an identifier node, if requested to do so. For more information on this, please see "Configuring a concatenation tool to work with AjaxInclude" below.
-
-With `enhance.js` and `quickconcat.php` covered, we can move on to the actual enhancements.
-
+The following SouthStreet scripts are typically loaded in a qualified manner by EnhanceJS, after bundling them in a single file amongst any other scripts we may need. These are part of SouthStreet purely because they serve the purpose of facilitating further enhancements to a page (by fetching assets conditionally).
 
 ## AjaxInclude
 
@@ -103,25 +76,9 @@ Once the DOM is ready, you can apply the plugin like this:
     $("[data-append],[data-replace],[data-after],[data-before]").ajaxInclude();
 	
 
-Perhaps the most powerful feature of AjaxInclude is that it can be used with a proxy file concatenator (such as [quickconcat](https://github.com/filamentgroup/quickconcat)) to fetch ALL includes via a single HTTP request! To use a proxy and include all ajax includes in one call, just pass in a URL that is ready to accept a list of files:
-
-    $("[data-append],[data-replace],[data-after],[data-before]").ajaxInclude( "quickconcat.php?wrap&files=" );
-
-### Configuring a concatenation tool to work with AjaxInclude
-
-AjaxInclude expects the concatenator's response to wrap each HTML file in an identifier element like this: `<entry url="..file url...">..content...</entry>`. That way, AjaxInclude can know which piece of HTML came from which file, and insert them in the proper places in the document. With QuickConcat, this is as simple as adding a `&wrap` parameter to the query string. Because of the benefits this provides the AjaxInclude technique, we recommend that this functionality be built as part of a dynamic concatenation tool as well, in the event that QuickConcat is not sufficient for production. For more information on how this works, check out the [quickconcat docs](https://github.com/filamentgroup/quickconcat#readme).
-
-## AppendAround
-
-[AppendAround](https://github.com/filamentgroup/AppendAround) is a CSS and JavaScript pattern for achieving source-order-independent layouts today. It allows us to physically move an element to different locations in a document depending on CSS breakpoints in a responsive layout. It's a way to achieve CSS flexbox-like layout in browsers today.
-
 ## Picturefill
 
-[Picturefill](https://github.com/scottjehl/picturefill/), while listed last in the SouthStreet lineup is perhaps the most critical piece of all with regards to optimization. When serving content images in HTML, developers have no native options in 
-HTML to deliver a context-appropriate image size, and that limitation requires us to apply server-based workarounds, or swap images with JavaScript and potentially load more than we need on many devices. Recently, Filament Group (and in particular, our own Mat Marquis), has led the charge in the creation of a new HTML element to solve this dilemma. How this element will take shape in a future spec is still being discussed, so in the interim, we have Picturefill. 
-
-Picturefill was originally developed to match a proposed `picture` element's behavior, but since the `picture` element is currently - and potentially will always be - non-standard, we have developed a `div`-based approach that we'd recommend for use today. 
-
+[Picturefill](https://github.com/scottjehl/picturefill/), while listed last in the SouthStreet lineup is one of the most critical pieces of all with regards to delivery optimization. 
 Picturefill allows us to reference several sources for a particular image in an HTML document, and based on which source's media query matches, Picturefill will load only one image appropriate to that context (and reevaluate whenever the viewport dimensions change as well).
 
 
@@ -129,28 +86,5 @@ Picturefill allows us to reference several sources for a particular image in an 
 
 The tools above combine to form the backbone of the SouthStreet workflow. Now that you understand the foundations, seeing it all in action should bring additional clarity. This repository includes a demo ([_demo.html](https://github.com/filamentgroup/enhance/blob/master/_demo.html)) that uses "Enhance" and "QuickConcat" to conditionally load a set of JavaScript and CSS files. If you check out the repo and run it on a web server, you'll get the full effect. We'll look to improve the demo further to utilize Shoestring and AjaxInclude as well soon, but this should give you a good idea of how things can work.
 
-## Related Filament Group Projects
-
-Filament Group actively develops and contributes to several other projects that we often find useful in our work. These aren't part of SouthStreet specifically, but you may find them useful:
-
-- [Respond.js](https://github.com/scottjehl/Respond): CSS3 Media Query support for Internet Explorer 6-8.
-- [Hide Address bar](https://github.com/scottjehl/Hide-Address-Bar): Normalized address bar hiding for iOS & Android
-- [Fixed-fixed](https://github.com/filamentgroup/fixed-fixed): CSS position:fixed qualifier.
-- [Overthrow](https://github.com/scottjehl/Overthrow): A tiny, no-frills, framework-independent, targeted overflow: auto polyfill for use in responsive design.
-- [RWD Nav Patterns](https://github.com/filamentgroup/RWD-Nav-Patterns): Responsive navigation patterns.
-- [MatchMedia Polyfill](https://github.com/paulirish/matchMedia.js): Run CSS3 Media Queries in JavaScript.
-- [Details Polyfill](https://github.com/filamentgroup/Details): A polyfill for the HTML5 details element.
-- [iOS OrientationChange Fix](https://github.com/scottjehl/iOS-Orientationchange-Fix): A workaround for the orientation change zoom bug found in iOS5 and older versions.
-- [Device Bugs](https://github.com/scottjehl/Device-Bugs): An open bug tracker for issues found in browsers and devices.
-- [jQuery Mobile](https://github.com/jquery/jquery-mobile): The jQuery Mobile Framework.
-- [jQuery Mobile Pagination](https://github.com/filamentgroup/jqm-pagination): Swipe-based website navigation for jQuery Mobile.
-- [Drive-In](https://github.com/scottjehl/Drive-In): A device testing theatre.
-- [Dynamic Carousel](https://github.com/Wilto/Dynamic-Carousel): A carousel plugin built for responsive layouts. 
-- [jQuery Pixel to Em Converter](https://github.com/scottjehl/jQuery-Pixel-Em-Converter): Like it says on the tin.
-- [jQuery Visualize](https://github.com/filamentgroup/jQuery-Visualize): Accessible data visualization.
-- [jQuery Tree Control](https://github.com/filamentgroup/jQuery-Tree-Control): An accessible tree control plugin.
-- [jQuery Custom Input](https://github.com/filamentgroup/jQuery-Custom-Input): Custom, accessible checks and radios.
-- [jQuery Accessible Slider](https://github.com/filamentgroup/jQuery-Slider): An accessible select/input-to-custom slider control.
-
-You can find more at our website as well. [Filament Group, Inc](http://filamentgroup.com)
+You can find more projects at our website as well. [Filament Group, Inc](http://filamentgroup.com/code)
 
