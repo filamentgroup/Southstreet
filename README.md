@@ -20,7 +20,7 @@ Our SouthStreet workflow utilizes the following tools, all of which are independ
 
 Together these tools form the core of Filament Group's progressive enhancement workflow. The scope of these individual projects vary widely, but they all share a common goal of serving front-end code faster, either by preventing or deferring the loading of code and assets that are not essential to the device, or by offering light-weight alternatives to common patterns. 
 
-For demonstration purposes, the `_tmpl` folder of this repository contains a working example of these tools working together.
+For demonstration purposes, the [Demo page](http://filamentgroup.github.io/Southstreet/demo.html) of this repository contains a working example of these tools working together.
 
 Please note that while these tools do represent key components of our overall approach, their applicability to a particular project always varies, and these particular projects are not always the best tool for the job at hand. Depending on whether a particular tool makes sense for the problem we're solving, we will often use alternative tools that provide similar functionality instead. For example, we commonly use jQuery instead of Shoestring (below), as Shoestring provides a small subset of jQuery's featureset, and is not always appropriate for the needs of our projects. In essence, the projects in SouthStreet are developed with a goal of ease of use and compatibility, but they should always be evaluated against other potential solutions. 
 
