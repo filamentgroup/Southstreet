@@ -56,7 +56,7 @@ For examples of how we recommend configuring the `head` of a page to use Enhance
 
 ## Grunticon 
 
-Grunticon is a grunt-based tool to make it easy to use SVG graphics with fallbacks for older browsers. We run Grunticon alongside our other build-time tasks to create CSS files that include our icons, which we then load asynchronously using Grunticon’s generated loader script, or by using our own scripts like `loadCSS`.
+[Grunticon](https://github.com/filamentgroup/grunticon) is a [Grunt](http://gruntjs.com/)-based tool to make it easy to use SVG graphics with fallbacks for older browsers. We run Grunticon alongside our other build-time tasks to create CSS files that include our icons, which we then load asynchronously using Grunticon’s generated loader script, or by using our own scripts like `loadCSS`.
 
 # Secondary Enhancement JavaScript Files
 
