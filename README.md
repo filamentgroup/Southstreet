@@ -15,6 +15,7 @@ Our SouthStreet workflow utilizes the following tools, all of which are independ
 - [loadJS](https://github.com/filamentgroup/loadJS): A function for loading JS asynchronously.
 - [cookie](https://github.com/filamentgroup/cookie): Get, set, or forget cookies.
 - [criticalCSS](https://github.com/filamentgroup/criticalcss/): A command-line tool for extracting critical CSS for a page. (we use this with [grunt-criticalCSS](https://github.com/filamentgroup/grunt-criticalcss/))
+- [Grunticon](https://github.com/filamentgroup/grunticon): A grunt-based tool to make it easy to use SVG graphics with fallbacks for older browsers.
 - [AjaxInclude](https://github.com/filamentgroup/Ajax-Include-Pattern/): a plugin that is designed for modular content construction, that runs on jQuery (or our yet-to-be released Shoestring DOM utility)
 - [Picturefill](https://github.com/scottjehl/picturefill/): A responsive images polyfill.
 
@@ -52,6 +53,10 @@ Inlining CSS this way is designed to optimize the first visit to any page on a s
 
 For examples of how we recommend configuring the `head` of a page to use EnhanceJS and CriticalCSS together, check out [the EnhanceJS readme](https://github.com/filamentgroup/enhance#how-to-use), or explore the demo files in this project.
 
+
+## Grunticon 
+
+Grunticon is a grunt-based tool to make it easy to use SVG graphics with fallbacks for older browsers. We run Grunticon alongside our other build-time tasks to create CSS files that include our icons, which we then load asynchronously using Grunticon’s generated loader script, or by using our own scripts like `loadCSS`.
 
 # Secondary Enhancement JavaScript Files
 
