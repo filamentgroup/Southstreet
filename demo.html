@@ -8,9 +8,6 @@
 		<title>Sample template</title>
 		<meta name="fullcss"  content="assets/css/full.css">
 		<meta name="fulljs"  content="assets/js/shoestring.ajaxinclude.enhancements.js">
-		<script>
-			{% include enhance.js %}
-		</script>
 		<!--#if expr="$HTTP_COOKIE=/fullcss\=true/" -->
 		<link rel="stylesheet" href="assets/css/full.css">
 		<!--#else -->
@@ -18,6 +15,9 @@
 			/* critical CSS styles for this template go here... */
 			{% include critical.css %}
 		</style>
+		<script>
+			{% include enhance.js %}
+		</script>
 		<noscript><link rel="stylesheet" href="assets/css/full.css"></noscript>
 	<!--#endif -->
 	</head>

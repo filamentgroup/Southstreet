@@ -15,12 +15,13 @@ Our SouthStreet workflow utilizes the following tools, all of which are independ
 - [loadJS](https://github.com/filamentgroup/loadJS): A function for loading JS asynchronously.
 - [cookie](https://github.com/filamentgroup/cookie): Get, set, or forget cookies.
 - [criticalCSS](https://github.com/filamentgroup/criticalcss/): A command-line tool for extracting critical CSS for a page. (we use this with [grunt-criticalCSS](https://github.com/filamentgroup/grunt-criticalcss/))
+- [Grunticon](https://github.com/filamentgroup/grunticon): A grunt-based tool to make it easy to use SVG graphics with fallbacks for older browsers.
 - [AjaxInclude](https://github.com/filamentgroup/Ajax-Include-Pattern/): a plugin that is designed for modular content construction, that runs on jQuery (or our yet-to-be released Shoestring DOM utility)
 - [Picturefill](https://github.com/scottjehl/picturefill/): A responsive images polyfill.
 
 Together these tools form the core of Filament Group's progressive enhancement workflow. The scope of these individual projects vary widely, but they all share a common goal of serving front-end code faster, either by preventing or deferring the loading of code and assets that are not essential to the device, or by offering light-weight alternatives to common patterns. 
 
-For demonstration purposes, the `_tmpl` folder of this repository contains a working example of these tools working together.
+For demonstration purposes, the [Demo page](http://filamentgroup.github.io/Southstreet/demo.html) of this repository contains a working example of these tools working together.
 
 Please note that while these tools do represent key components of our overall approach, their applicability to a particular project always varies, and these particular projects are not always the best tool for the job at hand. Depending on whether a particular tool makes sense for the problem we're solving, we will often use alternative tools that provide similar functionality instead. For example, we commonly use jQuery instead of Shoestring (below), as Shoestring provides a small subset of jQuery's featureset, and is not always appropriate for the needs of our projects. In essence, the projects in SouthStreet are developed with a goal of ease of use and compatibility, but they should always be evaluated against other potential solutions. 
 
@@ -52,6 +53,10 @@ Inlining CSS this way is designed to optimize the first visit to any page on a s
 
 For examples of how we recommend configuring the `head` of a page to use EnhanceJS and CriticalCSS together, check out [the EnhanceJS readme](https://github.com/filamentgroup/enhance#how-to-use), or explore the demo files in this project.
 
+
+## Grunticon 
+
+[Grunticon](https://github.com/filamentgroup/grunticon) is a [Grunt](http://gruntjs.com/)-based tool to make it easy to use SVG graphics with fallbacks for older browsers. We run Grunticon alongside our other build-time tasks to create CSS files that include our icons, which we then load asynchronously using Grunticon’s generated loader script, or by using our own scripts like `loadCSS`.
 
 # Secondary Enhancement JavaScript Files
 
