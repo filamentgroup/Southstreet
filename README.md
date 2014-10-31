@@ -16,7 +16,7 @@ Our SouthStreet workflow utilizes the following tools, all of which are independ
 - [cookie](https://github.com/filamentgroup/cookie): Get, set, or forget cookies.
 - [criticalCSS](https://github.com/filamentgroup/criticalcss/): A command-line tool for extracting critical CSS for a page. (we use this with [grunt-criticalCSS](https://github.com/filamentgroup/grunt-criticalcss/))
 - [Grunticon](https://github.com/filamentgroup/grunticon): A grunt-based tool to make it easy to use SVG graphics with fallbacks for older browsers.
-- [AjaxInclude](https://github.com/filamentgroup/Ajax-Include-Pattern/): a plugin that is designed for modular content construction, that runs on jQuery (or our yet-to-be released Shoestring DOM utility)
+- [AjaxInclude](https://github.com/filamentgroup/Ajax-Include-Pattern/): a plugin that is designed for modular content construction, that runs on jQuery (or our [Shoestring](https://github.com/filamentgroup/shoestring) DOM utility)
 - [Picturefill](https://github.com/scottjehl/picturefill/): A responsive images polyfill.
 
 Together these tools form the core of Filament Group's progressive enhancement workflow. The scope of these individual projects vary widely, but they all share a common goal of serving front-end code faster, either by preventing or deferring the loading of code and assets that are not essential to the device, or by offering light-weight alternatives to common patterns. 
