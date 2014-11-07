@@ -1348,4 +1348,4 @@ window.jQuery = shoestring;
 		// trigger ajaxIncludes
 		$( "[data-append],[data-replace],[data-after],[data-before]" ).ajaxInclude( "quickconcat.php?wrap&files=" );
 	});
-})( jQuery );
+}( jQuery ));
