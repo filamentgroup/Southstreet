@@ -89,7 +89,7 @@ Picturefill allows us to reference several sources for a particular image in an 
 
 ## Recap
 
-The tools above combine to form the backbone of the SouthStreet workflow. Now that you understand the foundations, seeing it all in action should bring additional clarity. This repository includes a demo ([_demo.html](https://github.com/filamentgroup/enhance/blob/master/_demo.html)) that uses "Enhance" and "QuickConcat" to conditionally load a set of JavaScript and CSS files. If you check out the repo and run it on a web server, you'll get the full effect. We'll look to improve the demo further to utilize Shoestring and AjaxInclude as well soon, but this should give you a good idea of how things can work.
+The tools above combine to form the backbone of the SouthStreet workflow. Now that you understand the foundations, seeing it all in action should bring additional clarity. This repository includes a demo ([_demo.html](https://github.com/filamentgroup/Southstreet/blob/master/demo.html)) that uses "Enhance" and "QuickConcat" to conditionally load a set of JavaScript and CSS files. If you check out the repo and run it on a web server, you'll get the full effect. We'll look to improve the demo further to utilize Shoestring and AjaxInclude as well soon, but this should give you a good idea of how things can work.
 
 You can find more projects at our website as well. [Filament Group, Inc](http://filamentgroup.com/code)
 
