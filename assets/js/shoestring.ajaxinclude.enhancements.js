@@ -266,7 +266,8 @@ It's here to represent the file we load in qualified browsers
 				if( callback ){
 					callback.apply( self, args );
 				}
-		};
+			};
+
 		shoestring.ajax( url, { success: intCB } );
 		return this;
 	};
