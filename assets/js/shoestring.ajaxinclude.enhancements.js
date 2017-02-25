@@ -1101,7 +1101,8 @@ It's here to represent the file we load in qualified browsers
 		});
 	};
 
-		Array.isArray = function(arg) {
+	if ( !Array.isArray ) {
+		Array.isArray = function( arg ) {
 			return Object.prototype.toString.call(arg) === '[object Array]';
 		};
 	}
