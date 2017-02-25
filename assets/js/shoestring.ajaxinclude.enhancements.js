@@ -1101,13 +1101,16 @@ It's here to represent the file we load in qualified browsers
 		});
 	};
 
-
+		Array.isArray = function(arg) {
+			return Object.prototype.toString.call(arg) === '[object Array]';
+		};
+	}
 
 	shoestring.each = function( obj, callback, args ){
 		var value,
 			i = 0,
 			length = obj.length,
-			isArray = ( typeof obj === "array" );
+			isArray = Array.isArray(obj);
 
 		if ( args ) {
 			if ( isArray ) {
