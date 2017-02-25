@@ -1176,7 +1176,7 @@ It's here to represent the file we load in qualified browsers
 
 
 
-})( this );
+}( this ));
 
 
 // jQuery map weee
@@ -1348,4 +1348,4 @@ window.jQuery = shoestring;
 		// trigger ajaxIncludes
 		$( "[data-append],[data-replace],[data-after],[data-before]" ).ajaxInclude( "quickconcat.php?wrap&files=" );
 	});
-})( jQuery );
+}( jQuery ));
