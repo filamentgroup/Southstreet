@@ -852,7 +852,7 @@ It's here to represent the file we load in qualified browsers
 				sibs.push( el );
 			}
 
-      el = el.nextSibling;
+			el = el.nextSibling;
 		} while( el );
 
 		return shoestring( sibs );
