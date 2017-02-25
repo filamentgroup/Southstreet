@@ -266,7 +266,8 @@ It's here to represent the file we load in qualified browsers
 				if( callback ){
 					callback.apply( self, args );
 				}
-		};
+			};
+
 		shoestring.ajax( url, { success: intCB } );
 		return this;
 	};
@@ -852,7 +853,7 @@ It's here to represent the file we load in qualified browsers
 				sibs.push( el );
 			}
 
-      el = el.nextSibling;
+			el = el.nextSibling;
 		} while( el );
 
 		return shoestring( sibs );
@@ -1101,13 +1102,17 @@ It's here to represent the file we load in qualified browsers
 		});
 	};
 
-
+	if ( !Array.isArray ) {
+		Array.isArray = function( arg ) {
+			return Object.prototype.toString.call(arg) === '[object Array]';
+		};
+	}
 
 	shoestring.each = function( obj, callback, args ){
 		var value,
 			i = 0,
 			length = obj.length,
-			isArray = ( typeof obj === "array" );
+			isArray = Array.isArray(obj);
 
 		if ( args ) {
 			if ( isArray ) {
@@ -1176,7 +1181,7 @@ It's here to represent the file we load in qualified browsers
 
 
 
-})( this );
+}( this ));
 
 
 // jQuery map weee
@@ -1348,4 +1353,4 @@ window.jQuery = shoestring;
 		// trigger ajaxIncludes
 		$( "[data-append],[data-replace],[data-after],[data-before]" ).ajaxInclude( "quickconcat.php?wrap&files=" );
 	});
-})( jQuery );
+}( jQuery ));
